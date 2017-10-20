@@ -1,0 +1,15 @@
+doctype html
+html
+  body
+    form#createForm
+      input(name="name" placeholder="name" required)
+      input(name="email" type="email" placeholder="email" required)
+      button(type="submit") create
+    form#getUser
+      input(id="searchValue" name="email" type="email" placeholder="email" required)
+      button(type="submit") get user
+    a(id="getAllUsers" href="") getAllUsers
+    #display
+
+
+  script(type="text/javascript" src="./index.js")
