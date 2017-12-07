@@ -1,0 +1,79 @@
+@import '../../pallette';
+
+.footer__top{
+  display: flex;
+  justify-content: space-between;
+  min-height: 150px;
+  padding: 25px;
+  background-color: rgba($black, .8);
+}
+.footer__left{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 35%;
+  padding-right: 25px;
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: $white;
+    border-radius: 5px;
+  }
+}
+.footer__middle{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 35%;
+  padding: 0 25px;
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background-color: $white;
+    border-radius: 5px;
+  }
+}
+.footer__mnu-list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  .footer__mnu-link{
+    color: $white;
+    &:hover{
+      color: $blue;
+    }
+  }
+}
+.footer__right{
+  width: 30%;
+  padding-left: 25px;
+  p{
+    margin: 0;
+    margin-bottom: 10px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+    i{
+      width: 25px;
+    }
+  }
+}
+.footer__bottom{
+  display: flex;
+  justify-content: center;
+  padding: 7px;
+  background-color: $blue;
+}

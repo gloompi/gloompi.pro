@@ -1,0 +1,40 @@
+//colors
+@import "../../pallette.scss";
+
+// layout
+
+@import "common/_fonts";
+@import "common/_mixins";
+@import "common/_media";
+@import "common/_greating";
+
+.main{
+  position: relative;
+  background-color: $bg;
+}
+.info__name,
+.hello__widget-title{
+  @include Roboto(medium);
+}
+.info__descr,
+.hello__widget-description{
+  @include Roboto(light);
+}
+
+.about__me{
+  h2{
+    @include Roboto(medium);
+  }
+}
+.footer__bottom,
+.footer__left,
+.footer__right{
+  @include Roboto(light);
+  color: $white;
+}
+.portfolio__title{
+  @include Roboto(medium);
+}
+.portfolio__form{
+  @include Roboto(light);
+}

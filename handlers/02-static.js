@@ -1,4 +1,3 @@
-
 // Usually served by Nginx
 const serve = require('koa-static');
 

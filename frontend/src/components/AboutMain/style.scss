@@ -1,0 +1,146 @@
+@import '../../assets/styles/main';
+
+.about__main{
+  position: relative;
+  background: linear-gradient(to right, #F3F0E9, #F3F0E9 50%, #F4F5F0 50%, #F4F5F0);
+}
+
+section{
+  h3{
+    position: relative;
+    text-align: center;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 30px;
+    text-transform: uppercase;
+    &:after{
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 100px;
+      height: 5px;
+      border-radius: 15px;
+      background-color: $text;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.bg__wrap{
+  position: absolute;
+  left: 0;
+  top: -150px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  .about__main-right,
+  .about__main-left{
+    width: 55%;
+  }.about__main-left{
+    margin-right: -5px;
+  }
+}
+.arrow__down{
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  border: none;
+  transition: .3s;
+  cursor: pointer;
+  &:hover{
+    top: 50px;
+  }
+}
+
+.about__wrap{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  .about__left,
+  .about__right{
+    width: 50%;
+    padding: 5px 50px;
+  }
+}
+
+.skills__list{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 30px 15px;
+}
+.skill__circle-wrap{
+  display: inline-block;
+  position: relative;
+  margin-bottom: 25px;
+  .skill__circle{
+    position: relative;
+    transform: rotate(-90deg);
+    z-index: 100;
+  }
+  .skill__circle-shadow{
+    left: 0;
+    top: 0;
+    z-index: 0;
+  }
+  .skill__circle-text{
+    position: absolute;
+    font-size: 14px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -55%);
+    text-align: center;
+  }
+}
+
+.about__me{
+  h2{
+    position: relative;
+    text-align: center;
+    font-size: 45px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    z-index: 200;
+  }
+  .about__me-pic{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    img{
+      width: 100%;
+    }
+  }
+}
+.about__title{
+  position: relative;
+  .about__pic-svg{
+    position: absolute;
+    left: 50%;
+    top: -40px;
+    transform: translateX(-50%);
+  }
+}
+
+.skills__wrap{
+  .description{
+    margin-bottom: 50px;
+  }
+  h4{
+    font-size: 25px;
+  }
+  .skills__list{
+    margin-bottom: 25px;
+    &:last-child{
+      margin-bottom: 0;
+    }
+  }
+}

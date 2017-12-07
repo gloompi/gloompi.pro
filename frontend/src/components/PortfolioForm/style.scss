@@ -1,0 +1,81 @@
+@import '../../pallette';
+
+.portfolio__form-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  background: url('../../assets/images/works-bg.png') center no-repeat;
+  background-size: cover;
+}
+.tower__pic-wrap{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+}
+.tower__pic{
+  height: 100%;
+}
+.portfolio__form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  background-color: rgba($text, .3);
+  border-radius: 10px;
+  padding-top: 25px;
+  z-index: 100;
+  overflow: hidden;
+  input{
+    height: 30px;
+  }
+  .form__text{
+    height: 120px;
+    resize: none;
+    padding-top: 10px;
+  }
+  input, 
+  .form__text{
+    width: 80%;
+    margin-bottom: 25px;
+    border: none;
+    background-color: rgba($text, .5);
+    border-radius: 5px;
+    padding-left: 15px;
+    color: $white;
+  }
+  h3{
+    color: $white;
+    &:after{
+      background-color: $white;
+    }
+  }
+}
+.form__btns{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  button{
+    font-size: 16px;
+    width: 50%;
+    height: 100%;
+    color: $white;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: .3s;
+    &:hover{
+      background-color: rgba(0, 0, 0, .2);
+    }
+  }
+  .form__submit{
+    background-color: $blue;
+    &:hover{
+      background-color: $hover-blue;
+    }
+  }
+}
