@@ -22,14 +22,16 @@ router
     ctx.body = article.toObject();
   })
   .put('/articles/:articleById', async function(ctx, next) {
-    Object.assign(ctx.articleById, pick(ctx.request.body, ArticlesModel.publicFields))
-    await ctx.articleById.save()
+    let articleFields = pick(ctx.req.body, ArticlesModel.publicFields);
+    if(ctx.req.files.img) articleFields.coverImage = ctx.req.files.img[0].path.slice(6);
+    Object.assign(ctx.articleById, articleFields);
+    await ctx.articleById.save();
 
-    ctx.body = ctx.articleById.toObject()
+    ctx.body = ctx.articleById.toObject();
   })
   .del('/articles/:articleById', async function(ctx, next) {
-    await ctx.articleById.remove()
-    ctx.body = 'ok'
+    await ctx.articleById.remove();
+    ctx.body = 'ok';
   })
   .get('/articles/:articleById', async function(ctx, next) {
     ctx.body = ctx.articleById.toObject()

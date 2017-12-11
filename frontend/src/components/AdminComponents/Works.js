@@ -7,7 +7,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import {List, ListItem} from 'material-ui/List';
 import {NavLink} from 'react-router-dom'
 
-import {loadAllWorks, deleteWork} from 'actions'
+import {loadAllWorks, deleteWork} from 'actions/worksActions'
 import {ObjToImmArr} from '../../helpers'
 
 import Loader from 'components/Loader'

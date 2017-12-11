@@ -17,20 +17,24 @@ router
   })
   .post('/works', async function(ctx, next){
     let workFields = pick(ctx.req.body, WorksModel.publicFields);
-    workFields.img = ctx.req.files.img[0].path.slice(6);
-    workFields.images = [];
-    for(let i=0; i < ctx.req.files.images.length; i++){
-      workFields.images[i] = ctx.req.files.images[i].path.slice(6)
-    };
+    if(ctx.req.files.img) workFields.img = ctx.req.files.img[0].path.slice(6);
+    if(ctx.req.files.images) {
+      workFields.images = [];
+      for(let i=0; i < ctx.req.files.images.length; i++){
+        workFields.images[i] = ctx.req.files.images[i].path.slice(6)
+      };
+    }
     let work = await WorksModel.create(workFields);
     ctx.body = work.toObject();
   })
   .put('/works/:workById', async function(ctx, next) {
     let workFields = pick(ctx.req.body, WorksModel.publicFields);
-    workFields.img = ctx.req.files.img[0].path.slice(6);
-    workFields.images = [];
-    for(let i=0; i < ctx.req.files.images.length; i++){
-      workFields.images[i] = ctx.req.files.images[i].path.slice(6)
+    if(ctx.req.files.img) workFields.img = ctx.req.files.img[0].path.slice(6);
+    if(ctx.req.files.images) {
+      workFields.images = [];
+      for(let i=0; i < ctx.req.files.images.length; i++){
+        workFields.images[i] = ctx.req.files.images[i].path.slice(6)
+      };
     }
     Object.assign(ctx.workById, workFields);
     await ctx.workById.save();

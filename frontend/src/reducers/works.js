@@ -32,17 +32,20 @@ export default (worksState = defaultState, action) => {
         .set('loading', false)
         .set('loaded', true)
 
-    case POST_WORK + SUCCESS:
+    case POST_WORK + START:
       return worksState
         .set('loaded', false)
+        .set('loading', false)
 
-    case DELETE_WORK + SUCCESS:
+    case DELETE_WORK + START:
       return worksState
         .set('loaded', false)
+        .set('loading', false)
 
-    case UPDATE_WORK+ SUCCESS:
+    case UPDATE_WORK+ START:
       return worksState
         .set('loaded', false)
+        .set('loading', false)
   }
   
   return worksState

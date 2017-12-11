@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
+import {createMarkup} from '../helpers'
+
 import TechIcons from 'components/TechIcons'
 import ScrollBar from 'containers/ScrollBar'
 import LeftScrollBar from 'containers/LeftScrollBar'
 
-export default class PreviewModal extends Component{
+class PreviewModal extends Component{
   static propTypes = {
     currentWork: PropTypes.any,
-    works: PropTypes.array.isRequired,
+    works: PropTypes.object.isRequired,
     isOpen: PropTypes.bool.isRequired,
     close: PropTypes.func.isRequired,
     next: PropTypes.func.isRequired,
@@ -22,7 +24,7 @@ export default class PreviewModal extends Component{
     const {currentWork, works, isOpen, close, next, prev} = this.props
     const {onTech} = this.state
     if(!currentWork) return null
-    const {title, img, images, tech, html, bgColor, link} = works[currentWork]
+    const {title, img, images, tech, html, bgColor, link} = works.get(currentWork)
     const style = {
       backgroundColor: bgColor
     }
@@ -58,22 +60,26 @@ export default class PreviewModal extends Component{
             >
               {tech.map(techItem => {
                 if(!techItem) return null
-                const {id, icon} = techItem
+                const {key, label} = JSON.parse(techItem)
                 return <li 
-                        key={id} 
+                        key={key} 
                         className="technologies__item" >
-                  <TechIcons tech = {icon} />
-                  <span className={`tech__text ${onTech?'active':null}`}>{icon}</span>
+                  <TechIcons tech = {label} />
+                  <span className={`tech__text ${onTech?'active':null}`}>{label}</span>
                 </li>
               })}
             </ul>
             <div className="preview__html">
-              {html}
+              <div dangerouslySetInnerHTML={createMarkup(html)} />
             </div>
-            <a className="view__website-link" href={link}>View Website</a>
+            <a className="view__website-link" href={link} target="_blank">View Website</a>
           </ScrollBar>
         </div>
       </div>
     )
   }
 }
+
+export default connect(state => ({
+  works: state.works.entities
+}), null)(PreviewModal)

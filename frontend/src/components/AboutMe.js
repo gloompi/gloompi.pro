@@ -1,33 +1,49 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 
-import avatar from 'assets/images/avatar.jpg'
+import {createMarkup} from '../helpers'
+import {loadAbout} from 'actions/aboutActions'
+
+import Loader from 'components/Loader'
 
 //svg
 import AboutPicStar from 'svg/aboutPicStar'
 
-export default function AboutMe() {
-  return(
-    <div className="about__me">
-      <div className="about__title">
-        <h2>About Me</h2>
-        <AboutPicStar width='100' color='#D9DDE6' />
+class AboutMe extends Component {
+  static propTypes = {
+    about: PropTypes.object.isRequired,
+    loadAbout: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    loaded: PropTypes.bool.isRequired
+  }
+
+  componentDidMount = () => {
+    const {loading, loaded, loadAbout} = this.props
+    if(!loaded && !loading) loadAbout()
+  }
+  
+  render(){
+    const {about, loaded} = this.props
+    const {title, coverImage, html} = about
+    if(!loaded) return <Loader />
+    return(
+      <div className="about__me">
+        <div className="about__title">
+          <h2>{title}</h2>
+          <AboutPicStar width='100' color='#D9DDE6' />
+        </div>
+        <div className="about__me-pic">
+          <img src={coverImage} alt=""/>
+        </div>
+        <div className="description" dangerouslySetInnerHTML={createMarkup(html)} />
       </div>
-      <div className="about__me-pic">
-        <img src={avatar} alt=""/>
-      </div>
-      <h3>Who am I</h3>
-      <div className="description">
-        <p>
-          I'am developer from Kyrgyzstan, 22 years old. 
-        </p>
-        <p>
-          I born in the small village Belovodskoe.
-        </p>
-        <p>
-          I love programming for the ability to create something new.
-        </p>
-      </div>
-    </div>
-  )
+    )
+  }
 }
+
+export default connect(state => ({
+  about: state.about.entities,
+  loaded: state.about.loaded,
+  loading: state.about.loading
+}), {loadAbout})(AboutMe)

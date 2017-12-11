@@ -12,7 +12,7 @@ const worksSchema = exports.worksSchema = new Schema({
     unique: true
   },
   category: {
-    type: String
+    type: Array
   },
   images: {
     type: Array
@@ -65,7 +65,7 @@ const articlesSchema = exports.articlesSchema = new Schema({
     type: String
   },
   category: {
-    type: String
+    type: Array
   },
   html: {
     type: String
@@ -101,7 +101,7 @@ const aboutSchema = exports.aboutSchema = new Schema({
     type: String,
     required: true
   },
-  cover__image: {
+  coverImage: {
     type: String,
     unique: true,
     required: true
@@ -120,7 +120,7 @@ const aboutSchema = exports.aboutSchema = new Schema({
 });
 
 const skillsSchema = exports.skillsSchema = new Schema({
-  title: {
+  name: {
     type: String,
     required: true
   }
@@ -144,8 +144,8 @@ const skillItemSchema = exports.skillItemSchema = new Schema({
     required: true
   },
   parent: {
-    type:     mongoose.Schema.Types.ObjectId,
-    ref:      'Skills',
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Skills',
     required: true
   }
 }, {
@@ -160,10 +160,10 @@ const skillItemSchema = exports.skillItemSchema = new Schema({
 
 worksSchema.statics.publicFields = ['title', 'img', 'category', 'images', 'tech', 'html', 'link', 'bgColor']
 articlesSchema.statics.publicFields = ['title', 'coverImage', 'category', 'html']
-aboutSchema.statics.publicFields = ['title', 'cover_image', 'html']
-skillsSchema.statics.publicFields = ['title', 'skillItems']
+aboutSchema.statics.publicFields = ['title', 'coverImage', 'html']
+skillsSchema.statics.publicFields = ['name', 'children']
 skillItemSchema.statics.publicFields = ['title', 'knowledge', 'parent']
-skillsSchema.virtual('skillItems', {
+skillsSchema.virtual('children', {
   ref: 'SkillItem', 
   localField: '_id',
   foreignField: 'parent'

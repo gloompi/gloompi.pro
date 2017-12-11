@@ -36,6 +36,12 @@ export default function MenuBar({that, isOpen}) {
           style={itemStyle} 
           primaryText="Blog" />
       </NavLink>
+      <NavLink to="/throne/skills">
+        <MenuItem 
+          onClick={handleClose.bind(that, isOpen)}
+          style={itemStyle} 
+          primaryText="Skills" />
+      </NavLink>
       <Divider />
       <NavLink to="/">
         <MenuItem style={itemStyle} primaryText="Home Page" />

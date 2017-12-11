@@ -9,7 +9,7 @@ import {NavLink} from 'react-router-dom'
 import IconButton from 'material-ui/IconButton';
 
 import {ObjToImmArr} from '../../helpers'
-import {loadAllWorks, loadCategories, updateWork} from 'actions'
+import {loadAllWorks, loadCategories, updateWork} from 'actions/worksActions'
 
 import CategorySelect from './WorkCategorySelect'
 import Redactor from 'components/Redactor'
@@ -36,9 +36,22 @@ class UpdateWork extends Component{
   }
 
   componentDidMount = () => {
-    const {loadAllWorks, worksLoaded, worksLoading, loadCategories, loaded} = this.props
+    const {works, match, loadAllWorks, worksLoaded, worksLoading, loadCategories, loaded} = this.props
+    const {id} = match.params
     if(!worksLoaded && !worksLoading) loadAllWorks()
     if(!loaded) loadCategories()
+    const currentWork = works.get(id)
+    const {
+      tech,
+      html
+    } = currentWork
+    const parsedTech = []
+    for(let techItem of tech){
+      parsedTech.push(JSON.parse(techItem))
+    }
+    this.setState({
+      tech: parsedTech
+    })
   }
 
   render(){
@@ -66,14 +79,15 @@ class UpdateWork extends Component{
     const {
       title,
       link,
-      bgColor
+      bgColor,
+      category
     } = currentWork
     return(
       <Paper className="container" style={style} zDepth={1} >
         <NavLink to="/throne/works">
           <RaisedButton label="Back" style={{margin: 12}} />
         </NavLink>
-        <h1 style={{color: '#009688', textAlign: 'center'}}>AddWork</h1>
+        <h1 style={{color: '#009688', textAlign: 'center'}}>UpdateWork</h1>
         <form 
           encType="multipart/form-data"
           action="#" 
@@ -157,18 +171,27 @@ class UpdateWork extends Component{
     const {id} = match.params
     const fd = new FormData()
 
-    for(let i=0; i < this.images.files.length; i++){
-      fd.append('images', this.images.files[i])
+    if(this.images.files.length){
+      for(let i=0; i < this.images.files.length; i++){
+        fd.append('images', this.images.files[i])
+      }
     }
-    fd.append('title', this.title.input.value)
-    fd.append('img', this.img.files.length?this.img.files[0]:null)
-    fd.append('category', this.category.state.values)
-    fd.append('tech', this.state.tech)
-    fd.append('html', this.state.html)
-    fd.append('link', this.link.input.value)
-    fd.append('bgColor', this.bgColor.value)
+    if (this.state.tech.length) {
+      for(let i=0; i < this.state.tech.length; i++){
+        fd.append('tech', JSON.stringify(this.state.tech[i]))
+      }
+    }
+    if(this.category.state.values.length){
+      for(let i=0; i < this.category.state.values; i++){
+        fd.append('category', this.category.state.values[i])
+      }
+    }
+    if(this.title.input.value.length) fd.append('title', this.title.input.value)
+    if(this.img.files.length) fd.append('img', this.img.files[0])
+    if(this.state.html.length) fd.append('html', this.state.html)
+    if(this.link.input.value.length) fd.append('link', this.link.input.value)
+    if(this.bgColor.value.length) fd.append('bgColor', this.bgColor.value)
     updateWork(id, fd)
-    loadAllWorks()
   }
 }
 export default connect(state => ({

@@ -20,3 +20,7 @@ export function arrToObj(arr){
 export function ObjToArr(obj){
   return Object.keys(obj).map(id = obj[id])
 }
+
+export function createMarkup(content) {
+  return {__html: content}
+}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import {ObjToImmArr} from '../helpers'
-import {loadCategories} from 'actions'
+import {loadCategories, pickCategory} from 'actions/worksActions'
 
 class CategoryList extends Component{
   static propTypes = {
@@ -38,8 +38,10 @@ class CategoryList extends Component{
     )
   }
 
-  handleCategory = type => e => {
-    e.preventDefault();
+  handleCategory = name => e => {
+    e.preventDefault()
+    const {pickCategory} = this.props
+    pickCategory(name)
   }
 }
 
@@ -47,4 +49,4 @@ export default connect(state => ({
   categories: ObjToImmArr(state.workCategories.entities),
   loaded: state.workCategories.loaded,
   fail: state.workCategories.fail
-}), {loadCategories})(CategoryList)
+}), {loadCategories, pickCategory})(CategoryList)

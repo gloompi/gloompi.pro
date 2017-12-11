@@ -8,6 +8,7 @@ import {IoSocialPython} from 'react-icons/lib/io'
 import {IoSocialJavascriptOutline} from 'react-icons/lib/io'
 import {IoSocialAngular} from 'react-icons/lib/io'
 import {IoSocialWordpress} from 'react-icons/lib/io'
+import {IoAndroidPhonePortrait} from 'react-icons/lib/io'
 
 export default function TechIcon(props) {
   const {tech} = props
@@ -27,6 +28,8 @@ export default function TechIcon(props) {
   if(tech == 'angular') return <IoSocialAngular />
 
   if(tech == 'wp') return <IoSocialWordpress />
+
+  if(tech == 'adaptive') return <IoAndroidPhonePortrait />
 
   return tech
 }

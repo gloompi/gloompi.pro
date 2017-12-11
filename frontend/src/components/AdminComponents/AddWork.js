@@ -9,7 +9,7 @@ import {NavLink} from 'react-router-dom'
 import IconButton from 'material-ui/IconButton';
 
 import {ObjToImmArr} from '../../helpers'
-import {loadAllWorks, loadCategories, addWork} from 'actions'
+import {loadAllWorks, loadCategories, addWork} from 'actions/worksActions'
 
 import CategorySelect from './WorkCategorySelect'
 import Redactor from 'components/Redactor'
@@ -143,15 +143,18 @@ class AddWork extends Component{
     for(let i=0; i < this.images.files.length; i++){
       fd.append('images', this.images.files[i])
     }
+    for(let i=0; i < this.state.tech.length; i++){
+      fd.append('tech', JSON.stringify(this.state.tech[i]))
+    }
+    for(let i=0; i < this.category.state.values.length; i++){
+      fd.append('category', this.category.state.values[i])
+    }
     fd.append('title', this.title.input.value)
     fd.append('img', this.img.files.length?this.img.files[0]:null)
-    fd.append('category', this.category.state.values)
-    fd.append('tech', this.state.tech)
     fd.append('html', this.state.html)
     fd.append('link', this.link.input.value)
     fd.append('bgColor', this.bgColor.value)
     addWork(fd)
-    loadAllWorks()
   }
 }
 export default connect(state => ({

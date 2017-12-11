@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import { CSSTransition } from 'react-transition-group'
 import Masonry from 'react-masonry-component';
 
-import {loadAllWorks} from 'actions'
+import {loadAllWorks} from 'actions/worksActions'
 import {filtratedItems} from 'selectors'
 import {ObjToImmArr} from '../../helpers'
 import Loader from 'components/Loader'
@@ -30,7 +30,6 @@ class PortfolioMain extends Component{
     const{loading, loaded, loadAllWorks} = this.props
     if(!loaded && !loading) loadAllWorks()
   }
-  
 
   state = {
     currentWorkId: '',
@@ -70,7 +69,6 @@ class PortfolioMain extends Component{
           </Masonry>
           <PreviewModal 
             currentWork = {currentWorkId} 
-            works={works} 
             isOpen={modalIsOpen} 
             close={this.handleClose} 
             next={availableNextButton?this.handleNext:null} 

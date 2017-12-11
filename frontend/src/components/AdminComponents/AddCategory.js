@@ -8,7 +8,7 @@ import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import {ObjToImmArr} from '../../helpers'
-import {deleteWorkCategory, loadCategories, addCategory} from 'actions'
+import {deleteWorkCategory, loadCategories, addCategory} from 'actions/worksActions'
 
 import CategorySelect from './WorkCategorySelect'
 import Redactor from 'components/Redactor'
@@ -30,6 +30,7 @@ class AddCategory extends Component{
   }
 
   render(){
+    const {loaded} = this.props
     const style = {
       minHeight: '95vh',
       width: '95%',

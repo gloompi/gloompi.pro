@@ -2,7 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const outputPath = path.resolve(__dirname, './dist')
+const outputPath = path.resolve(__dirname, '../public')
 
 const webpackConfig = {
 	entry: {
@@ -12,7 +12,7 @@ const webpackConfig = {
 		]
 	},
 	output: {
-		path: path.resolve(__dirname, './dist'),
+		path: outputPath,
 		filename: '[name].js'
 	},
 	module: {
