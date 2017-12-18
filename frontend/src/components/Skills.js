@@ -26,7 +26,7 @@ class Skills extends Component {
     return(
       <div className="skills__wrap">
         <h3>What can i do for you</h3>
-        <p className="description">I am a Frontend developer, but also familiar with BackEnd. Let's watch my skills.</p>
+        <p className="description">I am a Frontend developer, but also familiar with BackEnd. Let's look at my skills.</p>
         {skills.map(skillList => {
           const {name, id, children} = skillList
           return (
