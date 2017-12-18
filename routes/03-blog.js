@@ -41,5 +41,13 @@ router
 
     ctx.body = articles.map(article => article.toObject())
   })
+  .get('/articles/category/:page/:category', async function(ctx, next) {
+    let articles = await ArticlesModel.paginate({category: ctx.params.category}, { page: ctx.params.page, limit: 2 });
+    ctx.body = articles;
+  })
+  .get('/articles/page/:page', async function(ctx, next) {
+    let articles = await ArticlesModel.paginate({}, { page: ctx.params.page, limit: 2 });
+    ctx.body = articles;
+  })
 
 exports.init = app => app.use(router.routes())

@@ -30,7 +30,7 @@ export default class Links extends Component {
   
           <NavLink activeStyle={{color: '#FFEB3B'}} class="mnu__link" to='/portfolio'>Portfolio</NavLink>
           
-            <NavLink activeStyle={{color: '#FFEB3B'}} class="mnu__link" to='/blog'>Blog</NavLink>
+          <NavLink activeStyle={{color: '#FFEB3B'}} class="mnu__link" to='/blog/1'>Blog</NavLink>
         </nav>
       </div>
     )

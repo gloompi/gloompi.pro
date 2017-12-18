@@ -7,6 +7,7 @@ const {
   DELETE_ARTICLE,
   POST_ARTICLE_CATEGORY,
   POST_ARTICLE,
+  LOAD_ARTICLES_PAGE,
   LOAD_ARTICLE_CATEGORIES,
   LOAD_ALL_ARTICLES,
   LOAD_ARTICLE,
@@ -128,6 +129,64 @@ export function loadArticle(id) {
       .catch(error => {
         dispatch({
           type: LOAD_ARTICLE + FAIL,
+          payload: { error }
+        })
+      })
+  }
+}
+
+export function loadArticleByCategory(category, page = 1) {
+  return (dispatch) => {
+    dispatch({
+        type: LOAD_ARTICLES_PAGE + START,
+        payload: {}
+    })
+    
+    fetch(`/api/articles/category/${page}/${category}`)
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error(res.statusText)
+        }
+        return res.json()
+      })
+      .then(response => {
+        dispatch({
+          type: LOAD_ARTICLES_PAGE + SUCCESS,
+          payload: { response }
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: LOAD_ARTICLES_PAGE + FAIL,
+          payload: { error }
+        })
+      })
+  }
+}
+
+export function loadArticlesPage(page = 1) {
+  return (dispatch) => {
+    dispatch({
+        type: LOAD_ARTICLES_PAGE + START,
+        payload: {}
+    })
+    
+    fetch(`/api/articles/page/${page}`)
+      .then(res => {
+        if (res.status >= 400) {
+          throw new Error(res.statusText)
+        }
+        return res.json()
+      })
+      .then(response => {
+        dispatch({
+          type: LOAD_ARTICLES_PAGE + SUCCESS,
+          payload: { response }
+        })
+      })
+      .catch(error => {
+        dispatch({
+          type: LOAD_ARTICLES_PAGE + FAIL,
           payload: { error }
         })
       })

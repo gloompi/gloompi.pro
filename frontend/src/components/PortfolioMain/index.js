@@ -47,7 +47,7 @@ class PortfolioMain extends Component{
         <div className="portfolio__top-wrap">
           <button 
             className="arrow__down" 
-            onClick={() => scrollToComponent(this.main, { offset: -200, align: 'middle', duration: 500, ease:'inQuad'})}>
+            onClick={() => scrollToComponent(this.Main, { offset: -200, align: 'middle', duration: 500, ease:'inQuad'})}>
             <ArrowDown color="rgba(255, 255, 255, .7)" width="25" />
           </button>
           <PortfolioBg width='100%' color='rgba(0, 0, 0, .5)' />
@@ -56,7 +56,7 @@ class PortfolioMain extends Component{
         </div>
         <div 
           className="portfolio__content" 
-          ref={(section) => { this.main = section; }}>
+          ref={(section) => { this.Main = section }}>
           <CategoryList />
           <Masonry
               className={'works__list'}

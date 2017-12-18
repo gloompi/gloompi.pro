@@ -11,13 +11,15 @@ export default (OriginalComponent, mainClass = 'main', leftColor = '#f2f0e8', ri
     return(
       <main className={mainClass}>
         <div className="bg__wrap">
-          <button className="arrow__down" onClick={() => scrollToComponent(this.main, { offset: -350, align: 'middle', duration: 500, ease:'inQuad'})}>
+          <button 
+            className="arrow__down" 
+            onClick={() => scrollToComponent(this.Blue, { offset: -200, align: 'middle', duration: 1500, ease:'inCirc'})}>
             <ArrowDown color="rgba(255, 255, 255, .7)" width="25" />
           </button>
           <AboutBgLeft color={leftColor} width="100%" />
           <AboutBgRight color={rightColor} width="100%" />
         </div>
-        <div className="container" ref={section => { this.main = section }} >
+        <div className="container" ref={(section) => { this.Blue = section; }}>
           <OriginalComponent 
               {...this.props} 
               {...this.state} 
@@ -25,5 +27,14 @@ export default (OriginalComponent, mainClass = 'main', leftColor = '#f2f0e8', ri
         </div>
       </main>
     )
+  }
+
+  handleClick = () => {
+    scrollToComponent(this.Blue, {
+      offset: -200,
+      align: 'middle',
+      duration: 500,
+      ease: 'inQuad'
+    })
   }
 }

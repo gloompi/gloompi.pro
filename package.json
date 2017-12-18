@@ -13,6 +13,7 @@
     "koa-favicon": "^2.0.0",
     "koa-generic-session": "^2.0.0",
     "koa-logger": "^3.1.0",
+    "koa-mailer": "^0.1.0",
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
     "lodash": "^4.17.4",

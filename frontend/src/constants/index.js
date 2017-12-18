@@ -25,6 +25,8 @@ export default keyMirror({
   LOAD_SKILL_ITEM: null,
   LOAD_ABOUT: null,
   LOAD_ARTICLE: null,
+  LOAD_ARTICLE_BY_CATEGORY: null,
+  LOAD_ARTICLE_PAGE: null,
   LOAD_ALL_ARTICLES: null,
   LOAD_ARTICLE_CATEGORIES: null,
   LOAD_CATEGORIES: null,

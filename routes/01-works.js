@@ -53,5 +53,9 @@ router
 
     ctx.body = works.map(work => work.toObject())
   })
+  .get('/works/page/:page', async function(ctx, next) {
+    let works = await WorksModel.paginate({}, { page: ctx.params.page, limit: 2 });
+    ctx.body = works;
+  })
 
 exports.init = app => app.use(router.routes())

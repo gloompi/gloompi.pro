@@ -24,6 +24,12 @@ class CategoryList extends Component{
     if(!loaded) return <p>Loading...</p>
     return(
       <ul className="category__list">
+        <li className="category__item">
+          <a 
+            href="" 
+            className="category__link" 
+            onClick={this.handleCategory('All')}>All</a>
+        </li>
         {categories.map(category => {
           return(
             <li key={category.id} className="category__item">

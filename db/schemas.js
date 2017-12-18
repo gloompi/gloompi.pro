@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
+const mongoosePaginate = require('mongoose-paginate');
 
 const worksSchema = exports.worksSchema = new Schema({
   title: {
@@ -158,6 +159,7 @@ const skillItemSchema = exports.skillItemSchema = new Schema({
   timestamps :true
 });
 
+//statics
 worksSchema.statics.publicFields = ['title', 'img', 'category', 'images', 'tech', 'html', 'link', 'bgColor']
 articlesSchema.statics.publicFields = ['title', 'coverImage', 'category', 'html']
 aboutSchema.statics.publicFields = ['title', 'coverImage', 'html']
@@ -168,3 +170,7 @@ skillsSchema.virtual('children', {
   localField: '_id',
   foreignField: 'parent'
 });
+
+//plugins
+worksSchema.plugin(mongoosePaginate);
+articlesSchema.plugin(mongoosePaginate)

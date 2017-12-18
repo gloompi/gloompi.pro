@@ -3,7 +3,18 @@
 .blog__main{
   display: flex;
   align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  &.article{
+    padding: 25px 25px 50px;
+    min-height: 100vh;
+  }
+}
+.blog__wrap{
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
+  width: 100%;
   min-height: 100vh;
 }
 .blog__category-list{
@@ -77,5 +88,67 @@
   margin-top: 25px;
   &:hover{
     background-color: #263238;
+  }
+}
+
+.pagination__list{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding: 15px 0;
+  border-top: 2px solid #009688;
+  border-bottom: 2px solid #009688;
+}
+.pagination__item{
+  margin-right: 15px;
+  &:last-child{
+    margin-right: 0;
+  }
+}
+.pagination__link{
+  @include Roboto(medium);
+  font-size: rem(25px);
+  color: #009688;
+  &.active{
+    color: #004D40;
+  }
+  &:hover{
+    color: #004D40;
+  }
+}
+.prev__page-btn{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  i{
+    font-size: rem(35px);
+    color: #009688;
+    &:hover{
+      color: #004D40;
+    }
+  }
+  &.hiden{
+    display: none;
+  }
+}
+.next__page-btn{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  i{
+    font-size: rem(35px);
+    color: #009688;
+    &:hover{
+      color: #004D40;
+    }
+  }
+  &.hiden{
+    display: none;
   }
 }

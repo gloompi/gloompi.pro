@@ -22,7 +22,6 @@ class Skills extends Component {
 
   render(){
     const {loaded, skills} = this.props
-    console.log(skills)
     if(!loaded) return <Loader />
     return(
       <div className="skills__wrap">

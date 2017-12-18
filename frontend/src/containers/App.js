@@ -27,8 +27,8 @@ export default class App extends Component {
                     <Route exact path='/' component={Home}/>
                     <Route exact path='/about' component={About}/>
                     <Route exact path='/portfolio' component={Portfolio}/>
-                    <Route exact path='/blog' component={Blog}/>
-                    <Route path='/throne/' component={Admin}/>
+                    <Route path='/blog' component={Blog}/>
+                    <Route path='/throne' component={Admin}/>
                     <Route path="*" render={() => <h1>Page not Fount</h1>}/>
                   </Switch>
                 </ScrollToTopRoute>

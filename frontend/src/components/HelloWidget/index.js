@@ -27,7 +27,7 @@ const HelloMenu = () => {
     <nav class="hello__nav-mnu">
       <NavLink exact class="hello__nav-item" to='/portfolio'>Portfolio</NavLink>
       <NavLink exact class="hello__nav-item" to='/about'>About Me</NavLink>
-      <NavLink exact class="hello__nav-item" to='/blog'>Blog</NavLink>
+      <NavLink exact class="hello__nav-item" to='/blog/1'>Blog</NavLink>
     </nav>
   )
 }

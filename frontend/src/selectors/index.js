@@ -6,6 +6,7 @@ const categoryGetter = state => state.workCategories.picked
 
 export const filtratedItems = createSelector(listGetter, categoryGetter, (list, category) => {
   return ObjToImmArr(list).filter(item => {
+    if(category == 'All') return true
     if(!category.length) return true
     if(item.category && item.category.length !== 0){
       let toShow = false
