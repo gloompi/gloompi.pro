@@ -51,29 +51,27 @@ class PreviewModal extends Component{
           </LeftScrollBar>
         </div>
         <div className="preview__modal-right">
-          <ScrollBar style={{ maxHeight: '100vh' }}>
-            <h2 className="preview__title">{title}</h2>
-            <ul 
-              className="technologies__list"
-              onMouseEnter = {() => this.setState({onTech: true})} 
-              onMouseLeave = {() => this.setState({onTech: false})}
-            >
-              {tech.map(techItem => {
-                if(!techItem) return null
-                const {key, label} = JSON.parse(techItem)
-                return <li 
-                        key={key} 
-                        className="technologies__item" >
-                  <TechIcons tech = {label} />
-                  <span className={`tech__text ${onTech?'active':null}`}>{label}</span>
-                </li>
-              })}
-            </ul>
-            <div className="preview__html">
-              <div dangerouslySetInnerHTML={createMarkup(html)} />
-            </div>
-            <a className="view__website-link" href={link} target="_blank">View Website</a>
-          </ScrollBar>
+          <h2 className="preview__title">{title}</h2>
+          <ul 
+            className="technologies__list"
+            onMouseEnter = {() => this.setState({onTech: true})} 
+            onMouseLeave = {() => this.setState({onTech: false})}
+          >
+            {tech.map(techItem => {
+              if(!techItem) return null
+              const {key, label} = JSON.parse(techItem)
+              return <li 
+                      key={key} 
+                      className="technologies__item" >
+                <TechIcons tech = {label} />
+                <span className={`tech__text ${onTech?'active':null}`}>{label}</span>
+              </li>
+            })}
+          </ul>
+          <div className="preview__html">
+            <div dangerouslySetInnerHTML={createMarkup(html)} />
+          </div>
+          <a className="view__website-link" href={link} target="_blank">View Website</a>
         </div>
       </div>
     )
