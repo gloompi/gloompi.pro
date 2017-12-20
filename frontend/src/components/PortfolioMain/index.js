@@ -29,29 +29,58 @@ class PortfolioMain extends Component{
   componentDidMount = () => {
     const{loading, loaded, loadAllWorks} = this.props
     if(!loaded && !loading) loadAllWorks()
+
+    let width = screen.width || document.body.clientWidth
+    if(width <= 768){
+      this.setState({
+        tablet: true
+      })
+    }else {
+      this.setState({
+        tablet: false
+      })
+    }
+
+    window.addEventListener('resize', e => {
+      let resizeWidth = screen.width || document.body.clientWidth
+      if(resizeWidth <= 768){
+        if(this.state.tablet !== true){
+          this.setState({
+            tablet: true
+          })
+        }
+      }else{
+        if(this.state.tablet !== false){
+          this.setState({
+            tablet: false
+          })
+        }
+      }
+    })
   }
 
   state = {
     currentWorkId: '',
     modalIsOpen: false,
     availableNextButton: true,
-    availablePrevButton: true
+    availablePrevButton: true,
+    tablet: false
   }
 
   render(){
     const {works, loaded, loading} = this.props
-    const {currentWorkId, modalIsOpen, availableNextButton, availablePrevButton} = this.state
+    const {currentWorkId, modalIsOpen, availableNextButton, availablePrevButton, tablet} = this.state
     const masonryOptions = {}
     return(
       <main className="portfolio__main">
         <div className="portfolio__top-wrap">
           <button 
             className="arrow__down" 
-            onClick={() => scrollToComponent(this.Main, { offset: -200, align: 'middle', duration: 500, ease:'inQuad'})}>
+            onClick={() => scrollToComponent(this.Main, { offset: 0, align: 'top', duration: 500, ease:'inQuad'})}>
             <ArrowDown color="rgba(255, 255, 255, .7)" width="25" />
           </button>
           <PortfolioBg width='100%' color='rgba(0, 0, 0, .5)' />
-          <PortfolioHeaderText width="500" color="#3B3F4B" />
+          <PortfolioHeaderText width={tablet?'100%':'500'} color="#3B3F4B" />
           <h2 className="portfolio__title">My Works</h2>
         </div>
         <div 

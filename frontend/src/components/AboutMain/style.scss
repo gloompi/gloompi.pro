@@ -3,6 +3,9 @@
 .about__main{
   position: relative;
   background: linear-gradient(to right, #F3F0E9, #F3F0E9 50%, #F4F5F0 50%, #F4F5F0);
+  @include laptops(){
+    background: #F4F5F0;
+  }
 }
 
 section{
@@ -51,19 +54,37 @@ section{
   border: none;
   transition: .3s;
   cursor: pointer;
+  z-index: 100;
   &:hover{
     top: 50px;
+  }
+  @include laptops(){
+    top: 20px;
+    &:hover{
+      top: 25px;
+    }
+  }
+  @include tablets(){
+    top: -25px;
+    &:hover{
+      top: -20px;
+    }
   }
 }
 
 .about__wrap{
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
   .about__left,
   .about__right{
     width: 50%;
     padding: 5px 50px;
+    @include laptops(){
+      width: 100%;
+      padding: 0 25px;
+    }
   }
 }
 
@@ -73,6 +94,10 @@ section{
   justify-content: space-between;
   flex-wrap: wrap;
   padding: 30px 15px;
+  @include phones{
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 .skill__circle-wrap{
   display: inline-block;
@@ -103,7 +128,7 @@ section{
   h2{
     position: relative;
     text-align: center;
-    font-size: 45px;
+    font-size: rem(45px);
     text-transform: uppercase;
     margin-bottom: 50px;
     z-index: 200;

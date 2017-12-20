@@ -19,9 +19,9 @@ class ArticleModal extends Component{
   }
 
   componentDidMount = () => {
-    const {loaded, loading, loadArticle} = this.props
+    const {loaded, loadArticle} = this.props
     const {id} = this.props.match.params
-    if(!loaded && !loading) loadArticle(id)
+    if(!loaded) loadArticle(id)
   }
 
   render(){
@@ -46,6 +46,5 @@ class ArticleModal extends Component{
 
 export default connect(state => ({
   articles: state.articles.entities,
-  loaded: state.articles.loaded,
-  loading: state.articles.loading
+  loaded: state.articles.articleLoaded,
 }), {loadArticle})(mainBgDecor(ArticleModal))

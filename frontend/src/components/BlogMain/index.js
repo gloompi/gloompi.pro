@@ -25,7 +25,9 @@ class BlogMain extends Component{
   }
 
   state={
-    category: null
+    category: null,
+    isOpen: false,
+    fixed: false
   }
 
   componentDidMount = () => {
@@ -33,11 +35,27 @@ class BlogMain extends Component{
     const {loaded, loading, categoryLoaded, loadArticlesPage, loadArticleCategories} = this.props
     if(!loaded && !loading) loadArticlesPage(page)
     if(!categoryLoaded) loadArticleCategories()
+
+    window.addEventListener('scroll', e => {
+      if(window.pageYOffset >= 524){
+        if(!this.state.fixed){
+          this.setState({
+            fixed: true
+          })
+        }
+      }else{
+        if(this.state.fixed){
+          this.setState({
+            fixed: false
+          })
+        }
+      }
+    })
   }
 
   render(){
     const {articles, categories, categoryLoaded, pages} = this.props
-    const {category} = this.state
+    const {category, isOpen, fixed} = this.state
     const {page} = this.props.match.params
     let prevPage = +page - 1?+page - 1:null
     let nextPage = +page + 1 <= pages?+page + 1:null
@@ -46,7 +64,15 @@ class BlogMain extends Component{
     return(
       <div className="blog__main">
         <div className="blog__wrap">
-          <ul className="blog__category-list">
+          <a 
+            href="" 
+            onClick={this.handleOpen}
+            className={`open__category-btn ${isOpen?'active':''}`}>
+            {this.getIcon()}
+          </a>
+          <ul 
+            ref={list => {this.list = list}}
+            className={`blog__category-list ${fixed?'fixed':''} ${isOpen?'active':''}`}>
             {categories.map(category => {
               const {name, id} = category
               return <li key={id} className="blog__category-item">
@@ -124,12 +150,18 @@ class BlogMain extends Component{
     })
   }
 
+  getIcon = () => {
+    if(this.state.isOpen) return <i className="fa fa-angle-left"></i>
+    return <i className="fa fa-angle-right"></i>
+  }
+
   categoryClick = (category) => e => {
     e.preventDefault()
     const {loadArticleByCategory} = this.props
     loadArticleByCategory(category)
     this.setState({
-      category: category
+      category: category,
+      isOpen: false
     })
   }
 
@@ -138,6 +170,14 @@ class BlogMain extends Component{
     const {category} = this.state
     if(category) return loadArticleByCategory(category, page)
     loadArticlesPage(page)
+  }
+
+  handleOpen = e => {
+    e.preventDefault()
+
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
   }
 }
 

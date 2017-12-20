@@ -27,6 +27,7 @@ const ReducerState = Record({
   pages: null, 
   loading: false, 
   loaded: false, 
+  articleLoaded: false,
   entities: new OrderedMap({})
 })
 
@@ -42,32 +43,33 @@ export default (articlesState = defaultState, action) => {
 
     case LOAD_ARTICLE + START:
       return articlesState
-        .set('loading', true)
-        .set('loaded', false)
+        .set('articleLoaded', false)
 
     case LOAD_ARTICLES_PAGE + START:
       return articlesState
         .set('loading', true)
         .set('loaded', false)
+        .set('articleLoaded', false)
   
     case LOAD_ALL_ARTICLES + SUCCESS:
-      return articlesState
-        .set('entities', arrToImmObj(payload.response, ArticleRecord))
-        .set('loading', false)
-        .set('loaded', true)
-
-    case LOAD_ARTICLE + START:
       return articlesState
         .update('entities', entities => arrToImmObj(payload.response, ArticleRecord).merge(entities))
         .set('loading', false)
         .set('loaded', true)
+        .set('articleLoaded', true)
+
+    case LOAD_ARTICLE + SUCCESS:
+      return articlesState
+        .update('entities', entities => entities.set(payload.response.id, payload.response))
+        .set('articleLoaded', true)
 
     case LOAD_ARTICLES_PAGE + SUCCESS:
       return articlesState
-        .set('entities', arrToImmObj(payload.response.docs, ArticleRecord))
+        .update('entities', entities => arrToImmObj(payload.response.docs, ArticleRecord).merge(entities))
         .set('pages', payload.response.pages)
         .set('loading', false)
         .set('loaded', true)
+        .set('articleLoaded', true)
 
     case POST_ARTICLE + START:
       return articlesState

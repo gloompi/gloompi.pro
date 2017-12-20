@@ -13,28 +13,43 @@ import Home from 'containers/Home'
 import store from 'store'
 import ScrollBar from './ScrollBar';
 import ScrollToTopRoute from 'decorators/ScrollToTopRoute'
+import videoBg from 'assets/images/night.mp4'
+import Loader from 'components/Loader'
 
 export default class App extends Component {
+  componentDidMount = () => {
+    window.addEventListener('load', () => {
+      this.setState({
+        loaded: true
+      })
+    })
+  }
+  
+  state = {
+    loaded: false
+  }
   render(){
+    if(!this.state.loaded) return <Loader />
     return(
       <Router history={history}>
         <Provider store={store}>
-          <ScrollBar style={{ height: '100vh' }}> 
-            <MuiThemeProvider>
-              <div>
-                <ScrollToTopRoute>
-                  <Switch>
-                    <Route exact path='/' component={Home}/>
-                    <Route exact path='/about' component={About}/>
-                    <Route exact path='/portfolio' component={Portfolio}/>
-                    <Route path='/blog' component={Blog}/>
-                    <Route path='/throne' component={Admin}/>
-                    <Route path="*" render={() => <h1>Page not Fount</h1>}/>
-                  </Switch>
-                </ScrollToTopRoute>
+          <MuiThemeProvider>
+            <div>
+              <div className="video__bg-wrap">
+                <video src={videoBg} class="video__bg" autoPlay loop />
               </div>
-            </MuiThemeProvider>
-          </ScrollBar>
+              <ScrollToTopRoute>
+                <Switch>
+                  <Route exact path='/' component={Home}/>
+                  <Route exact path='/about' component={About}/>
+                  <Route exact path='/portfolio' component={Portfolio}/>
+                  <Route path='/blog' component={Blog}/>
+                  <Route path='/throne' component={Admin}/>
+                  <Route path="*" render={() => <h1>Page not Fount</h1>}/>
+                </Switch>
+              </ScrollToTopRoute>
+            </div>
+          </MuiThemeProvider>
         </Provider>
       </Router>
     )

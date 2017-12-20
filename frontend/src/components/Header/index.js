@@ -8,13 +8,11 @@ import Socials from 'components/Socials'
 //svg
 import AboutStart from 'svg/aboutStar'
 import avatar from 'assets/images/avatar.jpg'
-import video from 'assets/images/night.mp4'
 
 export default function Header(props) {
   const{title, description} = props
   return(
     <header class="header">
-      <video src={video} class="video__bg" autoPlay loop />
       <div className="header__bg" />
       <Socials />
       <div className="header__wrap">

@@ -1,4 +1,4 @@
-@import '../../pallette';
+@import '../../assets/styles/main';
 
 .map__wrap{
   position: relative;
@@ -47,5 +47,8 @@
   span{
     font-size: 14px;
     margin-left: 15px;
+  }
+  @include laptops(){
+    width: 100%;
   }
 }

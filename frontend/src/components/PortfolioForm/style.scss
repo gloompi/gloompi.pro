@@ -1,4 +1,4 @@
-@import '../../pallette';
+@import '../../assets/styles/main';
 
 .portfolio__form-wrap{
   display: flex;
@@ -14,6 +14,9 @@
   bottom: 0;
   right: 0;
   height: 100%;
+  @include tablets(){
+    display: none;
+  }
 }
 .tower__pic{
   height: 100%;

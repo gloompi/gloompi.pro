@@ -42,11 +42,11 @@ router
     ctx.body = articles.map(article => article.toObject())
   })
   .get('/articles/category/:page/:category', async function(ctx, next) {
-    let articles = await ArticlesModel.paginate({category: ctx.params.category}, { page: ctx.params.page, limit: 2 });
+    let articles = await ArticlesModel.paginate({category: ctx.params.category}, { page: ctx.params.page, limit: 10 });
     ctx.body = articles;
   })
   .get('/articles/page/:page', async function(ctx, next) {
-    let articles = await ArticlesModel.paginate({}, { page: ctx.params.page, limit: 2 });
+    let articles = await ArticlesModel.paginate({}, { page: ctx.params.page, limit: 10 });
     ctx.body = articles;
   })
 

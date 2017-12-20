@@ -1,4 +1,4 @@
-@import '../../pallette';
+@import '../../assets/styles/main';
 
 .footer__top{
   display: flex;
@@ -6,6 +6,9 @@
   min-height: 150px;
   padding: 25px;
   background-color: rgba($black, .8);
+  @include tablets(){
+    flex-direction: column;
+  }
 }
 .footer__left{
   display: flex;
@@ -23,6 +26,17 @@
     width: 3px;
     background-color: $white;
     border-radius: 5px;
+  }
+  @include tablets(){
+    width: 100%;
+    padding-right: 0;
+    padding-bottom: 25px;
+    &:after{
+      top: auto;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+    }
   }
 }
 .footer__middle{
@@ -43,6 +57,16 @@
     width: 3px;
     background-color: $white;
     border-radius: 5px;
+  }
+  @include tablets(){
+    width: 100%;
+    padding: 25px 0;
+    &:after{
+      top: auto;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+    }
   }
 }
 .footer__mnu-list{
@@ -70,10 +94,16 @@
       width: 25px;
     }
   }
+  @include laptops(){
+    padding-left: 0;
+    padding-top: 25px;
+    width: 100%;
+  }
 }
 .footer__bottom{
   display: flex;
   justify-content: center;
   padding: 7px;
   background-color: $blue;
+  text-align: center;
 }
