@@ -65,7 +65,7 @@ export default (articlesState = defaultState, action) => {
 
     case LOAD_ARTICLES_PAGE + SUCCESS:
       return articlesState
-        .update('entities', entities => arrToImmObj(payload.response.docs, ArticleRecord).merge(entities))
+        .set('entities', arrToImmObj(payload.response.docs, ArticleRecord))
         .set('pages', payload.response.pages)
         .set('loading', false)
         .set('loaded', true)

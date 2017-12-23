@@ -21,12 +21,6 @@ const app = exports.app = new Koa();
 
 const router = exports.router = new Router();
 
-const handlers = fs.readdirSync(path.join(__dirname, 'handlers')).sort();
-handlers.map(handler => require('./handlers/' + handler).init(app));
-
-const routes = fs.readdirSync(path.join(__dirname, 'routes')).sort();
-routes.map(route => require('./routes/' + route).init(app));
-
 router.get('*/app.js', async(ctx) => {
   ctx.type = 'application/javascript';
   ctx.body = fs.readFileSync(path.join(__dirname, 'public/app.js'));
@@ -35,12 +29,17 @@ router.get('*/app.js', async(ctx) => {
 router.get('*', async(ctx, next) => {
   const toStatic = /\.(jpg|jpeg|gif|png|ico|woff|otf|eot|mp4|svg|ttf|xml|css|js)$/;
   if(toStatic.test(ctx.request.url)){
-    ctx.request.url = ctx.request.url.slice(ctx.request.url.indexOf('/assets'));
     return next();
   }
   ctx.type = 'text/html';
   ctx.body = fs.readFileSync(path.join(__dirname, 'public/index.html'));
 });
+
+const handlers = fs.readdirSync(path.join(__dirname, 'handlers')).sort();
+handlers.map(handler => require('./handlers/' + handler).init(app));
+
+const routes = fs.readdirSync(path.join(__dirname, 'routes')).sort();
+routes.map(route => require('./routes/' + route).init(app));
 
 app.use(router.routes());
 app.use(serve('public'));
