@@ -85,6 +85,10 @@ const webpackConfig = {
 				to: outputPath + '/assets/img/loader.gif'
 			},
 			{ 
+				from: './src/assets/images/avatar.jpg', 
+				to: outputPath + '/assets/img/avatar.jpg'
+			},
+			{ 
 				from: './src/assets/tinymce/', 
 				to: outputPath + '/assets/tinymce/'
 			}

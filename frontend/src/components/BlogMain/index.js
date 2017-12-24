@@ -73,8 +73,17 @@ class BlogMain extends Component{
           <ul 
             ref={list => {this.list = list}}
             className={`blog__category-list ${fixed?'fixed':''} ${isOpen?'active':''}`}>
+            <li className="blog__category-item">
+              <a 
+                href="" 
+                onClick={this.categoryClick('All')}
+                className="blog__category-link">
+                All
+              </a>
+            </li>
             {categories.map(category => {
               const {name, id} = category
+              
               return <li key={id} className="blog__category-item">
                 <a 
                   href="" 
@@ -157,8 +166,12 @@ class BlogMain extends Component{
 
   categoryClick = (category) => e => {
     e.preventDefault()
-    const {loadArticleByCategory} = this.props
-    loadArticleByCategory(category)
+    const {loadArticleByCategory, loadArticlesPage} = this.props
+    if(category == 'All') {
+      loadArticlesPage()
+    } else{
+      loadArticleByCategory(category)
+    }
     this.setState({
       category: category,
       isOpen: false

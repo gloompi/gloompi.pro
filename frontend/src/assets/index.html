@@ -19,6 +19,27 @@
 </head>
 <body>
 	<div id="mount_place"></div>
+	<div id="loader" class="active">
+		<img src="assets/img/loader.gif" alt="Loader">
+	</div>
+	<style>
+		#loader{
+			position: fixed;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			left: -9999px;
+			top: 0;
+			width: 100%;
+			height: 100vh;
+			opacity: 0;
+			z-index: 100;
+		}
+		#loader.active{
+			left: 0;
+			opacity: 1;
+		}
+	</style>
 	<script type="text/javascript" src="/assets/tinymce/tinymce.js"></script>
 </body>
 </html>

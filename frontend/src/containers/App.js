@@ -19,17 +19,11 @@ import Loader from 'components/Loader'
 export default class App extends Component {
   componentDidMount = () => {
     window.addEventListener('load', () => {
-      this.setState({
-        loaded: true
-      })
+      document.getElementById('loader').className = ''
     })
   }
   
-  state = {
-    loaded: false
-  }
   render(){
-    if(!this.state.loaded) return <Loader />
     return(
       <Router history={history}>
         <Provider store={store}>

@@ -7,7 +7,6 @@ import Socials from 'components/Socials'
 
 //svg
 import AboutStart from 'svg/aboutStar'
-import avatar from 'assets/images/avatar.jpg'
 
 export default function Header(props) {
   const{title, description} = props
@@ -21,7 +20,7 @@ export default function Header(props) {
           borderColor='rgba(255, 255, 255, .1)' 
           width="500" />
         <div className="header__pic">
-          <img src={avatar} alt="" className="header__img"/>
+          <img src="/assets/img/avatar.jpg" alt="" className="header__img"/>
         </div>
         <div className="header__info">
           <div className="info__name"><h2>{title}</h2></div>

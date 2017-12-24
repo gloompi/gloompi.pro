@@ -29,6 +29,11 @@ router.get('*/app.js', async(ctx) => {
 router.get('*', async(ctx, next) => {
   const toStatic = /\.(jpg|jpeg|gif|png|ico|woff|otf|eot|mp4|svg|ttf|xml|css|js)$/;
   if(toStatic.test(ctx.request.url)){
+    const pointToSlice = ctx.request.url.indexOf('/assets')
+    if(pointToSlice && pointToSlice !== -1) {
+      const url = ctx.request.url.slice(pointToSlice)
+      ctx.request.url = url
+    }
     return next();
   }
   ctx.type = 'text/html';
