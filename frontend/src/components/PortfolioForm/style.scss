@@ -9,18 +9,6 @@
   background: url('../../assets/images/works-bg.png') center no-repeat;
   background-size: cover;
 }
-.tower__pic-wrap{
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  height: 100%;
-  @include tablets(){
-    display: none;
-  }
-}
-.tower__pic{
-  height: 100%;
-}
 .portfolio__form{
   display: flex;
   flex-direction: column;

@@ -16,9 +16,18 @@ export default class MapComponent extends Component {
     )
   }
   getMap = () => {
-    const mapState = { center: [32.37302558666005,119.42665999999997], zoom: 12 }
+    const mapState = {
+      center: [
+        32.37302558666005, 119.42665999999997
+      ],
+      zoom: 12,
+    }
     return <YMaps style={{width: "100%", height: "100%"}}>
-      <Map width="100%" height="100%" state={mapState}>
+      <Map 
+        width="100%" 
+        height="100%" 
+        state={mapState}
+        instanceRef = {ref => { ref && ref.behaviors.disable('scrollZoom'); }}>
         <Placemark
           geometry={{
             coordinates: [32.37302558666005,119.42665999999997]

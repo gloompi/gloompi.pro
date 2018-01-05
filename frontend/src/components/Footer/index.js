@@ -18,14 +18,22 @@ export default function Footer() {
     
             <NavLink class="footer__mnu-link" to='/portfolio'>Portfolio</NavLink>
           
-            <NavLink class="footer__mnu-link" to='/blog'>Blog</NavLink>
+            <NavLink class="footer__mnu-link" to='/blog/1'>Blog</NavLink>
           </ul>
           <Socials />
         </div>
         <div className="footer__right">
           <p><i class="fa fa-skype"></i>gloompi</p>
-          <p><i class="fa fa-envelope"></i>gloompique@yandex.ru</p>
-          <p><i class="fa fa-phone"></i>+8-132-7001-8916</p>
+          <p>
+            <a href="mailto: gloompi@gmail.com">
+              <i class="fa fa-envelope"></i>gloompi@gmail.com
+            </a>
+          </p>
+          <p>
+            <a href="tel: +813270018916">
+              <i class="fa fa-phone"></i>+8-132-7001-8916
+            </a>
+          </p>
           <p><i class="fa fa-map-marker"></i>Yangzhou city, China</p>
         </div>
       </div>

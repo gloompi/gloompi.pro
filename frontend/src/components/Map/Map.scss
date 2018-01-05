@@ -33,6 +33,20 @@
   justify-content: flex-start;
   width: 48%;
   margin-bottom: 25px;
+  a{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    color: $text;
+    &:hover{
+      color: $hover-blue;
+      text-decoration: underline;
+      span{
+        transform: scale(1.05);
+      }
+    }
+  }
   i{
     display: flex;
     align-items: center;
@@ -47,6 +61,7 @@
   span{
     font-size: 14px;
     margin-left: 15px;
+    transition: .3s;
   }
   @include laptops(){
     width: 100%;

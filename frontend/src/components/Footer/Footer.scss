@@ -90,6 +90,12 @@
     &:last-child{
       margin-bottom: 0;
     }
+    a{
+      color: white;
+      &:hover{
+        color: $blue;
+      }
+    }
     i{
       width: 25px;
     }

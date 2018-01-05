@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import './style.scss'
-import img from 'assets/images/tower.png'
 
 export default class PortfolioForm extends Component{
   static propTypes = {
@@ -24,9 +23,6 @@ export default class PortfolioForm extends Component{
             <button type="reset">Clear</button>
           </div>
         </form>
-        <div className="tower__pic-wrap">
-          <img className="tower__pic" src={img} />
-        </div>
       </section>
     )
   }
