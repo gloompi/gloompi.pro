@@ -71,6 +71,5 @@
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "tinymce": "^4.7.3"
   }
 }
