@@ -18,12 +18,19 @@ import Loader from 'components/Loader'
 
 export default class App extends Component {
   componentDidMount = () => {
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('loader').className = ''
     })
   }
   
   render(){
+    const def = (promise) => {
+      return promise.then(cmp => {
+        console.info('Dynamic loaded by route: ', cmp.default.displayName)
+        return cmp.default
+      })
+    }
+
     return(
       <Router history={history}>
         <Provider store={store}>

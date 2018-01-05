@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --colors --progress",
-    "dist": "webpack -p"
+    "dist": "webpack -p",
+    "neutrino-start": "neutrino start --use neutrino-preset-react",
+    "neutrino-build": "neutrino build --use neutrino-preset-react"
   },
   "author": "Kubanychbek Esenzhanov <gloompiFrontEnd@yandex.ru>",
   "license": "ISC",
@@ -43,13 +45,14 @@
     "@tinymce/tinymce-react": "^2.0.3",
     "@types/googlemaps": "^3.30.2",
     "@types/markerclustererplus": "^2.1.33",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-preset-env": "^1.6.1",
     "copy-webpack-plugin": "^4.1.1",
     "exports-loader": "^0.6.4",
     "fbjs": "^0.8.16",
     "font-awesome": "^4.7.0",
     "font-awesome-loader": "^1.0.2",
-    "google-maps-react": "^1.1.2",
+    "google-maps-react": "next",
     "immutable": "^3.8.2",
     "imports-loader": "^0.7.1",
     "key-mirror": "^1.0.1",
@@ -64,12 +67,14 @@
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scroll-to-component": "^1.0.1",
+    "react-scroll-to-component": "next",
     "react-tinymce": "^0.7.0",
     "react-transition-group": "^2.2.1",
     "react-yandex-maps": "^2.1.4",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "tinymce": "^4.7.4",
+    "uglifyjs-webpack-plugin": "^1.1.6"
   }
 }
