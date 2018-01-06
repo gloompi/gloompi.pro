@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import Links from 'components/Links'
 import Header from 'components/Header'
 import PortfolioMain from 'components/PortfolioMain'
-import PortfolioForm from 'components/PortfolioForm'
 import Footer from 'components/Footer'
 
 export default class Portfolio extends Component{
@@ -19,7 +18,6 @@ export default class Portfolio extends Component{
           description='Frontend developer'
            />
         <PortfolioMain />
-        <PortfolioForm />
         <Footer />
       </div>
     )
