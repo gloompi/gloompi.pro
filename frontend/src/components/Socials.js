@@ -7,17 +7,17 @@ export default function Socials() {
       <ul className="social__list">
         <li className="social__item">
           <a href="https://vk.com/gloompi" target="_blank" className="social__link">
-            <i className="fa fa-vk"></i>
+            <i className="fab fa-vk"></i>
           </a>
         </li>
         <li className="social__item">
           <a href="https://github.com/gloompi" target="_blank" className="social__link">
-            <i className="fa fa-github"></i>
+            <i className="fab fa-github-alt"></i>
           </a>
         </li>
         <li className="social__item">
           <a href="https://www.linkedin.com/in/gloompi/" target="_blank" className="social__link">
-            <i className="fa fa-linkedin"></i>
+            <i className="fab fa-linkedin-in"></i>
           </a>
         </li>
       </ul>

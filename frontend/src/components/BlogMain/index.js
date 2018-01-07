@@ -31,6 +31,7 @@ class BlogMain extends Component{
   }
 
   componentDidMount = () => {
+    console.log('blog')
     const {page} = this.props.match.params
     const {loaded, loading, categoryLoaded, loadArticlesPage, loadArticleCategories} = this.props
     if(!loaded && !loading) loadArticlesPage(page)

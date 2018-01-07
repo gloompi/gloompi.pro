@@ -40,7 +40,20 @@
 			left: 0;
 			opacity: 1;
 		}
+		#loader span{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+		}
 	</style>
+	<script>
+		window.addEventListener('load', (e) => {
+      document.getElementById('loader').className = ''
+    });
+	</script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
 	<script type="text/javascript" src="/assets/tinymce/tinymce.min.js" defer async></script>
+	<script id="dsq-count-scr" src="//gloompique.disqus.com/count.js" async></script>
 </body>
 </html>

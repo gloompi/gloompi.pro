@@ -23,18 +23,20 @@ export default function Footer() {
           <Socials />
         </div>
         <div className="footer__right">
-          <p><i class="fa fa-skype"></i>gloompi</p>
+          <p>
+            <span><i class="fab fa-skype"></i></span>gloompi
+          </p>
           <p>
             <a href="mailto: gloompi@gmail.com">
-              <i class="fa fa-envelope"></i>gloompi@gmail.com
+              <span><i class="far fa-envelope"></i></span>gloompi@gmail.com
             </a>
           </p>
           <p>
             <a href="tel: +813270018916">
-              <i class="fa fa-phone"></i>+8-132-7001-8916
+              <span><i class="fas fa-phone"></i></span>+8-132-7001-8916
             </a>
           </p>
-          <p><i class="fa fa-map-marker"></i>Yangzhou city, China</p>
+          <p><span><i class="fas fa-map-marker-alt"></i></span>Yangzhou city, China</p>
         </div>
       </div>
       <div className="footer__bottom">

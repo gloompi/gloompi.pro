@@ -86,7 +86,7 @@
   }
 }
 .blog__category-link{
-  @include Roboto(medium);
+  @include Roboto();
   font-size: rem(18px);
   display: block;
   padding: 15px 0;

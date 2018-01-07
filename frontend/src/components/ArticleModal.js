@@ -21,6 +21,7 @@ class ArticleModal extends Component{
   componentDidMount = () => {
     const {loaded, loadArticle} = this.props
     const {id} = this.props.match.params
+    console.log(id)
     if(!loaded) loadArticle(id)
   }
 
@@ -39,6 +40,7 @@ class ArticleModal extends Component{
         <div className="article__html">
           <div dangerouslySetInnerHTML={createMarkup(html)} />
         </div>
+        <div id="disqus_thread"></div>
       </div>
     )
   }

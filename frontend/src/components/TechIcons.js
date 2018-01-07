@@ -1,35 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {IoSocialNodejs} from 'react-icons/lib/io'
-import {IoSocialHtml5} from 'react-icons/lib/io'
-import {IoSocialCss3} from 'react-icons/lib/io'
-import {IoSocialSass} from 'react-icons/lib/io'
-import {IoSocialPython} from 'react-icons/lib/io'
-import {IoSocialJavascriptOutline} from 'react-icons/lib/io'
-import {IoSocialAngular} from 'react-icons/lib/io'
-import {IoSocialWordpress} from 'react-icons/lib/io'
-import {IoAndroidPhonePortrait} from 'react-icons/lib/io'
 
 export default function TechIcon(props) {
   const {tech} = props
   
-  if(tech == 'node') return <IoSocialNodejs />
+  if(tech == 'node') return <i className='fab fa-node' />
 
-  if(tech == 'html5') return <IoSocialHtml5 />
+  if(tech == 'html5') return <i className='fab fa-html5' />
 
-  if(tech == 'css3') return <IoSocialCss3 />
+  if(tech == 'css3') return <i className='fab fa-css3' />
 
-  if(tech == 'sass') return <IoSocialSass />
+  if(tech == 'sass') return <i className='fab fa-sass' />
 
-  if(tech == 'python')return <IoSocialPython />
+  if(tech == 'less') return <i className='fab fa-less' />
 
-  if(tech == 'js') return <IoSocialJavascriptOutline />
+  if(tech == 'python')return <i className='fab fa-python' />
 
-  if(tech == 'angular') return <IoSocialAngular />
+  if(tech == 'js') return <i className='fab fa-js' />
 
-  if(tech == 'wp') return <IoSocialWordpress />
+  if(tech == 'angular') return <i className='fab fa-angular' />
 
-  if(tech == 'adaptive') return <IoAndroidPhonePortrait />
+  if(tech == 'wp') return <i className='fab fa-wordpress' />
+
+  if(tech == 'adaptive') return <i className='fas fa-mobile-alt' />
+
+  if(tech == 'react') return <i className='fab fa-react' />
+
+  if(tech == 'ember') return <i className='fab fa-ember' />
+
+  if(tech == 'gulp') return <i className='fab fa-gulp' />
+
+  if(tech == 'git') return <i className='fab fa-git' />
+
+  if(tech == 'apple') return <i className='fab fa-apple' />
+
+  if(tech == 'android') return <i className='fab fa-android' />
 
   return tech
 }

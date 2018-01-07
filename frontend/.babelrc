@@ -4,9 +4,16 @@
 		"react",
 		"stage-0"
 	],
+	"env": {
+		"production": {
+			"presets": ["react-optimize"]
+		},
+		"targets": {
+			"browsers": ["last 2 versions"]
+		}
+	},
 	"plugins": [
 		"react-html-attrs",
-		"react-hot-loader/babel",
-		"syntax-dynamic-import"
+		"react-hot-loader/babel"
 	]
 }

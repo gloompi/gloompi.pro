@@ -10,7 +10,8 @@ const webpackConfig = {
 		app: [
 			'react-hot-loader/patch',
 			path.resolve(__dirname, './src/index.js')
-		]
+		],
+		vendor: ['react', 'react-dom', 'react-router-dom']
 	},
 	output: {
 		path: outputPath,

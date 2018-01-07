@@ -62,14 +62,14 @@
 }
 
 @mixin Roboto($style: regular) {
-	font-family: 'Mountains';
+	font-family: 'Roboto';
 
 	@if $style == bold {
-		font-family: 'Berk';
+		font-family: 'Roboto-bold';
 	}
 
 	@if $style == light {
-		font-family: 'Learning';
+		font-family: 'Roboto-light';
 	}
 
 	@if $style == medium {
