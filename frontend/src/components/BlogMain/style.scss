@@ -86,7 +86,7 @@
   }
 }
 .blog__category-link{
-  @include Roboto();
+  @include Roboto(bold);
   font-size: rem(18px);
   display: block;
   padding: 15px 0;
@@ -218,4 +218,9 @@
   &.hiden{
     display: none;
   }
+}
+
+#disqus_thread{
+  width: 100%;
+  margin-top: 50px;
 }

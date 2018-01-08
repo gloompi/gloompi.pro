@@ -15,13 +15,21 @@ class ArticleModal extends Component{
     articles: PropTypes.object.isRequired,
     loadArticle: PropTypes.func.isRequired,
     loaded: PropTypes.bool.isRequired,
-    loading: PropTypes.bool.isRequired,
   }
 
   componentDidMount = () => {
     const {loaded, loadArticle} = this.props
     const {id} = this.props.match.params
-    console.log(id)
+    var disqus_config = function () {
+    this.page.url = `http://gloompi.pro/blog/article${id}`;
+    this.page.identifier = id;
+    };
+    (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://gloompique.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
     if(!loaded) loadArticle(id)
   }
 

@@ -17,6 +17,11 @@ import videoBg from 'assets/images/night.mp4'
 import Loader from 'components/Loader'
 
 export default class App extends Component {
+  componentDidMount = () => {
+		document.addEventListener('DOMContentLoaded', (e) => {
+      document.getElementById('loader').className = ''
+    })
+  }
   render(){
     return(
       <Router history={history}>
